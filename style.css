@@ -440,11 +440,14 @@ section h2 {
     text-decoration: underline;
     color: #e07b00; 
 }
+.contact-section p  {
+ text-align: center ;
+}
 
 /* Footer */
 footer {
-    background: #2c3e50; /* Dark blue-grey for footer */
-    color: #bdc3c7; /* Lighter grey text for footer */
+    background: #2c3e50; 
+    color: #bdc3c7; 
     text-align: center;
     padding: 20px 0;
 }
