@@ -480,3 +480,6 @@ footer {
     margin: 0 10px; /* Add some space between icons */
     vertical-align: middle; /* Align images nicely with text */
 }
+.highlight {
+    color: cornflowerblue;
+}
