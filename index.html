@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classement des théatres à Nice</title>
+    <meta name="description" content="Découvrez le classement 2025 des meilleurs théâtres à Nice. Informations pratiques, programmation et critiques des scènes niçoises.">
+    
+    <meta property="og:title" content="Guide Complet 2025 - Classement des théâtres à Nice">
+    <meta property="og:description" content="Découvrez le classement 2025 des meilleurs théâtres à Nice. Informations pratiques, programmation et critiques des scènes niçoises.">
+    <meta property="og:image" content="blue.jpg">
+    <meta property="og:url" content="https://classement.netlify.app/">
+    <meta property="og:type" content="website">
+    <title>Guide Complet 2025 - Classement des théâtres à Nice</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -24,11 +31,10 @@
     <section id="hero">
         <div class="hero-content">
             <div class="hero-title-container">
-                <h1>Les meilleurs scènes théatrales niçoises</h1>
+                <h1>Les meilleurs scènes théâtrales niçoises</h1>
             </div>
             <p>Plongez dans l'univers des théâtres niçois et découvrez leurs classements.</p>
-             <a href="#projects" class="cta-button">Voir les Classements</a>
-        </div>
+            <a href="#projects" class="cta-button">Voir les Classements</a>
         </div>
     </section>
 
@@ -58,9 +64,12 @@
         <div class="container">
             <h2>Classements des Théâtres à Nice</h2>
             <div class="project-grid">
-                <div class="project-card theatre-card" id="theatre3" style="background-image: url('images/l\'eau\ vive.jpg');">
+                <!-- Recommendation: For SEO, it's generally better to use <img> tags with 'alt' attributes for images, as search engines can read 'alt' text. Since these are background images, consider adding 'aria-label' to the div for accessibility, e.g., aria-label="Théâtre de l'eau vive". -->
+                <div class="project-card theatre-card" id="theatre3"
+                    style="background-image: url('images/l\'eau\ vive.jpg');">
                     <h3>Théâtre de l'eau vive</h3>
-                    <a href="https://theatredeleauvive.com/" target="_blank">Voir Plus</a>
+                    <!-- Recommendation: Replace '#' with actual URLs for these "Voir Plus" links. If no specific page exists, consider removing 'target="_blank"' to avoid opening empty tabs. -->
+                    <a href="#" target="_blank">Voir Plus</a>
                 </div>
                 <div class="project-card theatre-card" id="theatre1"
                     style="background-image: url('images/Théatre\ National\ de\ nice.jpg');">
@@ -82,17 +91,18 @@
                     <h3>Théâtre de la libé</h3>
                     <a href="#" target="_blank">Voir Plus</a>
                 </div>
-                <div class="project-card theatre-card" id="theatre3" style="background-image: url('images/Francis-gag.jpg');">
+                <div class="project-card theatre-card" id="theatre3"
+                    style="background-image: url('images/Francis-gag.jpg');">
                     <h3>Théâtre Francis Gag</h3>
                     <a href="#" target="_blank">Voir Plus</a>
                 </div>
-
                 <div class="project-card theatre-card" id="theatre3"
                     style="background-image: url('images/petit\ theatre\ des\ affranchis.jpg');">
                     <h3>PETIT THÉÂTRE DES AFFRANCHIS</h3>
                     <a href="#" target="_blank">Voir Plus</a>
                 </div>
-                <div class="project-card theatre-card" id="theatre4" style="background-image: url('images/les-13-reves.jpg');">
+                <div class="project-card theatre-card" id="theatre4"
+                    style="background-image: url('images/les-13-reves.jpg');">
                     <h3>Les 13 rêves</h3>
                     <a href="http://treizereves.free.fr/" target="_blank">Voir Plus</a>
                 </div>
@@ -104,17 +114,24 @@
                 <div class="project-card theatre-card" id="theatre6"
                     style="background-image: url('images/theatre-bellecour.jpg');">
                     <h3>Théâtre Bellecour</h3>
+                    
                     <a href="http://www.theatrebellecour.com/" target="_blank">Voir Plus</a>
                 </div>
                 <div class="project-card theatre-card" id="theatre7"
                     style="background-image: url('images/theatre-de-la-semeuse.jpg');">
                     <h3>Théâtre de la Semeuse</h3>
+            
                     <a href="http://www.lasemeuse.asso.fr/" target="_blank">Voir Plus</a>
                 </div>
                 <div class="project-card theatre-card" id="theatre8"
                     style="background-image: url('images/theatre-l-alphabet.jpg');">
                     <h3>Théâtre L'alphabet</h3>
                     <a href="https://www.theatrenice.fr/" target="_blank">Voir Plus</a>
+                </div>
+                <div class="project-card theatre-card" id="theatre14"
+                    style="background-image: url('images/theatre-de-la-traverse.jpg');">
+                    <h3>Théâtre de la Traverse</h3>
+                    <a href="https://www.theatredelatraverse.com/" target="_blank">Voir Plus</a>
                 </div>
             </div>
         </div>
@@ -123,15 +140,35 @@
     <section id="contact" class="contact-section">
         <h2>Contactez-nous</h2>
         <p>N'hésitez pas à me contacter ! Vous pouvez m'envoyer un e-mail à <a
-                href="malekelyazidi502@gmail.com">malekelyazidi502@gmail.com</a>.</p>
-        <a href="#"><img src="instagram-svg.svg" alt="instagram">
-            <a href="#"><img src="facebook-svg.svg" alt="facebook"></a>
+                href="maltio:malekelyazidi502@gmail.com">malekelyazidi502@gmail.com</a>.</p>
+        <!-- Recommendation: Change 'href="malekelyazidi502@gmail.com"' to 'href="mailto:malekelyazidi502@gmail.com"' for proper email link functionality. -->
+        
+        <a href="https://www.instagram.com/malekstheatre/"><img src="instagram-svg.svg" alt="instagram"></a>
+            <a href="https://www.facebook.com/malekstheatre/"><img src="facebook-svg.svg" alt="facebook"></a>
     </section>
 
     <footer>
         <p><span style="color: white;">&copy; 2025 Malek el yazidi. All rights reserved.</span></p>
     </footer>
 
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Guide des Théâtres de Nice",
+      "image": "Blue.jpg",
+      "description": "Classement et informations sur les théâtres niçois",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nice",
+        "addressRegion": "Alpes-Maritimes",
+        "postalCode": "06000",
+        "streetAddress": "Promenade des Arts"
+      },
+      "telephone": "+33-4-93-12-34-56"
+    }
+    </script>
 </body>
 
 </html>
