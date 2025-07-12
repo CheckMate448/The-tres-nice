@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initAnimations();
     initAccessibility();
+    initEnhancedFeatures();
     
-    console.log('Malek\'s Theatre website loaded successfully!');
+    console.log('Malek\'s Theatre website loaded successfully with Tailwind CSS!');
 });
 
-// Filtering functionality
+// Enhanced Filtering functionality
 function initFiltering() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const theatreCards = document.querySelectorAll('.theatre-card');
@@ -20,28 +21,33 @@ function initFiltering() {
         button.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
             
-            // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
+            // Update active button styling
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-gradient-to-r', 'from-theatre-blue', 'to-theatre-purple', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
             
-            // Filter cards
-            theatreCards.forEach(card => {
+            this.classList.remove('bg-white', 'text-gray-700');
+            this.classList.add('active', 'bg-gradient-to-r', 'from-theatre-blue', 'to-theatre-purple', 'text-white');
+            
+            // Filter cards with animation
+            theatreCards.forEach((card, index) => {
                 const category = card.getAttribute('data-category');
                 
                 if (filter === 'all' || category === filter) {
                     card.style.display = 'block';
-                    card.style.animation = 'fadeInUp 0.6s ease forwards';
+                    card.style.animation = `slideUp 0.6s ease-out ${index * 0.1}s forwards`;
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
                 } else {
                     card.style.display = 'none';
                 }
             });
-            
-            // Add loading effect
-            const projectGrid = document.querySelector('.project-grid');
-            projectGrid.classList.add('loading');
-            setTimeout(() => {
-                projectGrid.classList.remove('loading');
-            }, 300);
         });
     });
 }
@@ -72,27 +78,49 @@ function initSmoothScrolling() {
 
 // Mobile menu functionality
 function initMobileMenu() {
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileToggle = document.querySelector('#mobile-menu-btn');
     const nav = document.querySelector('header nav ul');
     
     if (mobileToggle && nav) {
         mobileToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
-            this.classList.toggle('active');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-full');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('w-full');
+            nav.classList.toggle('bg-white');
+            nav.classList.toggle('bg-opacity-95');
+            nav.classList.toggle('backdrop-blur-sm');
+            nav.classList.toggle('p-4');
+            nav.classList.toggle('space-y-4');
+            nav.classList.toggle('space-x-8');
+            
+            // Update menu icon
+            const svg = this.querySelector('svg');
+            if (nav.classList.contains('flex')) {
+                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            } else {
+                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            }
         });
         
         // Close mobile menu when clicking on a link
         const navLinks = nav.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                nav.classList.remove('active');
-                mobileToggle.classList.remove('active');
+                nav.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-white', 'bg-opacity-95', 'backdrop-blur-sm', 'p-4', 'space-y-4');
+                nav.classList.add('hidden', 'space-x-8');
+                
+                const svg = mobileToggle.querySelector('svg');
+                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
             });
         });
     }
 }
 
-// Animation on scroll
+// Enhanced animations
 function initAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -102,6 +130,7 @@ function initAnimations() {
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in');
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
             }
@@ -113,12 +142,21 @@ function initAnimations() {
     sections.forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         observer.observe(section);
+    });
+    
+    // Observe theatre cards for staggered animation
+    const theatreCards = document.querySelectorAll('.theatre-card');
+    theatreCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
     });
 }
 
-// Accessibility improvements
+// Enhanced accessibility
 function initAccessibility() {
     // Add keyboard navigation for filter buttons
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -141,13 +179,14 @@ function initAccessibility() {
         position: absolute;
         top: -40px;
         left: 6px;
-        background: #87ceeb;
+        background: #1e40af;
         color: #fff;
-        padding: 8px;
+        padding: 8px 16px;
         text-decoration: none;
-        border-radius: 4px;
+        border-radius: 8px;
         z-index: 1001;
         transition: top 0.3s;
+        font-weight: 600;
     `;
     
     skipLink.addEventListener('focus', function() {
@@ -167,25 +206,46 @@ function initAccessibility() {
     }
 }
 
-// Rating system enhancement
-function initRatingSystem() {
-    const ratingElements = document.querySelectorAll('.rating');
+// Enhanced features
+function initEnhancedFeatures() {
+    // Add hover effects for theatre cards
+    const theatreCards = document.querySelectorAll('.theatre-card');
+    
+    theatreCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+            this.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+        });
+    });
+    
+    // Add rating hover effects
+    const ratingElements = document.querySelectorAll('.bg-theatre-gold');
     
     ratingElements.forEach(rating => {
-        const stars = rating.querySelector('.stars');
-        const ratingText = rating.querySelector('.rating-text');
+        rating.addEventListener('mouseenter', function() {
+            this.style.filter = 'drop-shadow(0 0 12px rgba(245, 158, 11, 0.8))';
+            this.style.transform = 'scale(1.05)';
+        });
         
-        if (stars && ratingText) {
-            const ratingValue = parseFloat(ratingText.textContent);
-            
-            // Add tooltip on hover
-            rating.addEventListener('mouseenter', function() {
-                this.style.cursor = 'help';
-            });
-            
-            rating.addEventListener('mouseleave', function() {
-                this.style.cursor = 'default';
-            });
+        rating.addEventListener('mouseleave', function() {
+            this.style.filter = 'drop-shadow(0 0 8px rgba(245, 158, 11, 0.6))';
+            this.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Add scroll-triggered animations
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('#hero');
+        const speed = scrolled * 0.5;
+        
+        if (parallax) {
+            parallax.style.transform = `translateY(${speed}px)`;
         }
     });
 }
@@ -222,18 +282,21 @@ function initSearch() {
     searchInput.placeholder = 'Rechercher un théâtre...';
     searchInput.className = 'search-input';
     searchInput.style.cssText = `
-        padding: 10px 15px;
-        border: 2px solid #87ceeb;
+        padding: 12px 20px;
+        border: 2px solid #1e40af;
         border-radius: 25px;
         margin-bottom: 20px;
         width: 300px;
         max-width: 100%;
         font-size: 1rem;
+        font-family: 'Poppins', sans-serif;
+        outline: none;
+        transition: all 0.3s ease;
     `;
     
     const projectsSection = document.querySelector('#projects .container');
     if (projectsSection) {
-        const filterButtons = projectsSection.querySelector('.filter-buttons');
+        const filterButtons = projectsSection.querySelector('.flex');
         if (filterButtons) {
             filterButtons.parentNode.insertBefore(searchInput, filterButtons);
         }
@@ -246,7 +309,7 @@ function initSearch() {
         
         theatreCards.forEach(card => {
             const title = card.querySelector('h3').textContent.toLowerCase();
-            const description = card.querySelector('.theatre-description').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
             
             if (title.includes(searchTerm) || description.includes(searchTerm)) {
                 card.style.display = 'block';
@@ -259,7 +322,6 @@ function initSearch() {
 
 // Initialize additional features
 document.addEventListener('DOMContentLoaded', function() {
-    initRatingSystem();
     optimizePerformance();
     // Uncomment the line below to enable search functionality
     // initSearch();
@@ -267,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Add some fun interactive features
 function addInteractiveFeatures() {
-    // Add click sound effect for theatre cards
+    // Add click ripple effect for theatre cards
     const theatreCards = document.querySelectorAll('.theatre-card');
     
     theatreCards.forEach(card => {
@@ -317,25 +379,27 @@ style.textContent = `
         top: 6px !important;
     }
     
-    .mobile-menu-toggle.active span:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-    
-    @media (max-width: 768px) {
-        header nav ul {
-            display: none;
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
-        header nav ul.active {
-            display: flex;
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.6s ease-in-out forwards;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
         }
     }
 `;
