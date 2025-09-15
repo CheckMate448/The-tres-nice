@@ -430,17 +430,6 @@
 
     <!-- Structured Data -->
     <script type="application/ld+json">
-    <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
-<script src="https://unpkg.com/photo-sphere-viewer@5/dist/photo-sphere-viewer.js"></script>
-<script>
-  const viewer = new PhotoSphereViewer.Viewer({
-    container: document.getElementById('viewer'),
-    panorama: '360.PNG.jpg',
-    loadingImg: 'https://photo-sphere-viewer.js.org/assets/photosphere-logo.gif',
-    touchmoveTwoFingers: true
-  });
-</script>
-    
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
@@ -465,6 +454,16 @@
 
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
+<script src="https://unpkg.com/photo-sphere-viewer@5/dist/photo-sphere-viewer.js"></script>
+<script>
+  const viewer = new PhotoSphereViewer.Viewer({
+    container: document.getElementById('viewer'),
+    panorama: '360.PNG.jpg',
+    loadingImg: 'https://photo-sphere-viewer.js.org/assets/photosphere-logo.gif',
+    touchmoveTwoFingers: true
+  });
+</script>
 </body>
 
 </html>
